@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+	<defs>
+		<style>
+			.red {
+				fill: #da513d;
+			}
+
+			.word {
+				animation: fade 3000ms infinite;
+			}
+
+			.word.w-1 {animation-delay: 0ms;}
+			.word.w-2 {animation-delay: 187.5ms;}
+			.word.w-3 {animation-delay: 375ms;}
+			.word.w-4 {animation-delay: 562.5ms;}
+			.word.w-5 {animation-delay: 750ms;}
+			.word.w-6 {animation-delay: 937.5ms;}
+			.word.w-7 {animation-delay: 1125ms;}
+			.word.w-8 {animation-delay: 1312.5ms;}
+
+			@keyframes fade {
+				33.33% {
+					opacity: 1;
+				}
+				66.67% {
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+				}
+			}
+		</style>
+	</defs>
+	<path class="red" d="M2.5,4.5v13h3V21l4.667-3.5H21.5V4.5Zm18,12H9.833L6.5,19V16.5h-3V5.5h17Z"/>
+	<rect class="red word w-1" x="5.5" y="7.5" width="4" height="1"/>
+	<rect class="red word w-2" x="11.5" y="7.5" width="3" height="1"/>
+	<rect class="red word w-3" x="16.5" y="7.5" width="2" height="1"/>
+	<rect class="red word w-4" x="5.5" y="10.5" width="3" height="1"/>
+	<rect class="red word w-5" x="10.5" y="10.5" width="3" height="1"/>
+	<rect class="red word w-6" x="15.5" y="10.5" width="3" height="1"/>
+	<rect class="red word w-7" x="5.5" y="13.5" width="6" height="1"/>
+	<rect class="red word w-8" x="13.5" y="13.5" width="4" height="1"/>
+</svg>

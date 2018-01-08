@@ -1,0 +1,45 @@
+{
+	"name": "charliedev/default-site",
+	"description": "Allows fallback sites to be defined for a Craft CMS installation.",
+	"type": "craft-plugin",
+	"version": "0.0.1",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Charlie Development",
+			"email": "support@charliedev.com",
+			"homepage": "http://charliedev.com/"
+		}
+	],
+	"keywords": [
+		"craft",
+		"cms",
+		"craftcms",
+		"default",
+		"site",
+		"multi-site"
+	],
+	"support": {
+		"issues": "https://github.com/charliedevelopment/craft3-default-site/issues?state=open",
+		"source": "https://github.com/charliedevelopment/craft3-default-site",
+		"email": "support@charliedev.com"
+	},
+	"require": {
+		"craftcms/cms": "^3.0.0-RC1"
+	},
+	"autoload": {
+		"psr-4": {
+			"charliedev\\defaultsite\\": "src/"
+		}
+	},
+	"extra": {
+		"name": "Default Site",
+		"handle": "default-site",
+		"changelogUrl": "https://raw.githubusercontent.com/charliedevelopment/craft3-default-site/master/CHANGELOG.md",
+		"downloadUrl": "https://github.com/charliedevelopment/craft3-default-site/archive/master.zip",
+		"schemaVersion": "0.0.1",
+		"hasCpSettings": false,
+		"hasCpSection": false,
+		"class": "charliedev\\defaultsite\\DefaultSite"
+	}
+}
