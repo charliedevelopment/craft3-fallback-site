@@ -1,9 +1,11 @@
 {% import '_includes/forms' as forms %}
 
+<p>Set the fallback sites of each available site below. If a site is set to itself, it will not check further, and is considered to have no fallback.</p>
+
 {% for site in sites|keys %}
 	{{ forms.selectField({
 		label : 'Fallback site for "{fallbackSite}"' | t('fallback-site', {'fallbackSite': sites[site]}),
-		instructions : 'What site, if any, should potential 404s for "{fallbackSite}" redirect to?' | t('fallback-site', {'fallbackSite': sites[site]}),
+		instructions : 'If a request fails on this site, what site should the slug be checked against next, if any?' | t('fallback-site'),
 		id : 'sites[' ~ site ~ ']',
 		name : 'sites[' ~ site ~ ']',
 		value: settings.sites[site],
