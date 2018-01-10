@@ -11,7 +11,7 @@ When a request is made for an element that would normally not be found, *Fallbac
 	* If a Spanish version does not exist, then *Fallback Site* makes Craft use the English element in place of the Spanish one (With some conditions listed below).
 * If an English element is not found, then the request continues as a 404 as normal.
 
-See the flowcharts below which demonstrate what happens when requesting a page, `about-us`, in Spanish (`es`).
+See the flowcharts below which demonstrate what happens when requesting a page, `about-us`, under a secondary, Spanish site (located at `/es`) within a multi-site Craft installation.
 
 **Normal Craft element handling**
 
@@ -57,11 +57,6 @@ Here, you can select which site acts as a fallback for each other site. Keep in 
 ## Usage
 
 While the plugin works without any additional configuration, you may want to know if an entry being displayed has been substituted by *Fallback Site*. This may be done to display notices about the availability of site-specific content, or notify users of the replacement. Detecting this can be done by comparing the current site stored by Craft with the entry's associated site.
-
-<h3>Site language: {{ craft.app.language }}</h3>
-{{ craft.app.sites.currentSite.name }}
-<h3>Entry language: {{ entry.site.language }}</h3>
-{{ entry.site.name }}
 
 ```
 {% if craft.app.sites.currentSite != entry.site %}
