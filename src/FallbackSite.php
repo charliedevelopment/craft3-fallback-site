@@ -58,8 +58,7 @@ class FallbackSite extends Plugin
                 }
 			},
 			false
-		);
-		*/
+		);*/
 
 		// This section, instead of going the event-based approach, will preemptively determine if
 		// there is an element at the given URL, and attempt to find one if not, using as much of
@@ -69,7 +68,11 @@ class FallbackSite extends Plugin
 		// In addition, because it hooks into Craft's own system of rendering, it may be less likely
 		// to interfere with other plugins or behaviors that would normally run for entry rendering
 		// or on 404 handling.
-		if (!Craft::$app->getRequest()->getIsConsoleRequest() && Craft::$app->getRequest()->getIsSiteRequest() && !Craft::$app->getRequest()->getIsLivePreview()) { // Only run for regular web frontend requests.
+		
+		// Only run for regular web frontend requests.
+		if (!Craft::$app->getRequest()->getIsConsoleRequest()
+			&& Craft::$app->getRequest()->getIsSiteRequest()
+			&& !Craft::$app->getRequest()->getIsLivePreview()) {
 			$element = Craft::$app->getUrlManager()->getMatchedElement(); // Find the element that the current URL is going to.
 			if ($element == null) { // No element found, this request will 404 normally.
 				$originalsite = Craft::$app->getSites()->currentSite; // Get the current site, for reference.
@@ -112,8 +115,8 @@ class FallbackSite extends Plugin
 	 * @see craft\base\Plugin
 	 */
 	protected function createSettingsModel()
-    {
-        return new \charliedev\fallbacksite\models\Settings();
+	{
+		return new \charliedev\fallbacksite\models\Settings();
 	}
 	
 	/**
@@ -121,23 +124,24 @@ class FallbackSite extends Plugin
 	 * @see craft\base\Plugin
 	 */
 	protected function settingsHtml()
-    {
+	{
 		$sites = Craft::$app->getSites()->getAllSites();
 		$siteoptions = [];
 
 		foreach ($sites as $site) {
 			$siteoptions[$site->id] = Craft::t('site', $site->name);
 		}
-        return Craft::$app->getView()->renderTemplate('fallback-site/_settings', [
+		return Craft::$app->getView()->renderTemplate('fallback-site/_settings', [
 			'settings' => $this->getSettings(),
 			'sites' => $siteoptions
-        ]);
+		]);
 	}
 	
 	/**
 	 * Attempts to find and render an entry from configured fallback sites if an entry hasn't been found for the visited site.
 	 */
-	private function renderFallbackEntry() {
+	private function renderFallbackEntry()
+	{
 		$originalsite = Craft::$app->getSites()->currentSite; // Store the original site being visited.
 		$siteid = $originalsite->id; // Storage for the ID of the site currently being checked.
 		$path = Craft::$app->getRequest()->getPathInfo(); // Retrieve the path being visited, used for checking for entries.
@@ -156,11 +160,9 @@ class FallbackSite extends Plugin
 			
 			$element = Craft::$app->getElements()->getElementByUri($path, $siteid, true); // Check for an entry with the same path in the fallback site.
 			if ($element) { // An element was found with the given path and site id.
-				
 				// Make sure the element has a route, too.
 				$route = $element->getRoute();
 				if ($route) {
-
 					// Check to see if the element has an enabled version with the original site, in case it actually just has a different slug.
 					$originalelement = Craft::$app->getElements()->getElementById($element->id, null, $originalsite->id);
 					if ($originalelement && $originalelement->getStatus() == 'live') { // Found an element with a different slug.

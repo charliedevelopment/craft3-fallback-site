@@ -21,7 +21,8 @@ class Settings extends Model
 	 * @inheritdoc
 	 * @see yii\base\BaseObject
 	 */
-	public function init() {
+	public function init()
+	{
 
 		$sites = Craft::$app->getSites()->getAllSiteIds();
 
@@ -37,7 +38,8 @@ class Settings extends Model
 	 * @inheritdoc
 	 * @see craft\base\Model
 	 */
-	public function rules() {
+	public function rules()
+	{
 		return [
 			['sites', 'validateSites']
 		];
@@ -46,7 +48,8 @@ class Settings extends Model
 	/**
 	 * Makes sure that the sites and their configured fallbacks are valid.
 	 */
-	public function validateSites(string $attribute) {
+	public function validateSites(string $attribute)
+	{
 		if (!is_array($this->sites)) {
 			$this->addError($attribute, Craft::t('fallback-site', 'Sites must be provided as an array'));
 			return;
