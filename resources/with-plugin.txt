@@ -1,0 +1,16 @@
+graph TD
+	A["Incoming request"]
+	B["Is there an entry for /es/about-us?"]
+	C["Use entry as normal"]
+	D["Is there an entry for /about-us"]
+	E["404"]
+	F["Does /about-us have an enabled<br>version on the original site?"]
+	G["Use /about-us instead"]
+	H["301 redirect to /es/sobre-nosotros"]
+	A --> B
+	B --"Yes"--> C
+	B --"No, fallback to main site"--> D
+	D --"No"--> E
+	D --"Yes"--> F
+	F --"No"--> G
+	F --"Yes, at /es/sobre-nosotros"--> H

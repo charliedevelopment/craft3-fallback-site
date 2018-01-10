@@ -1,0 +1,8 @@
+graph TD
+	A["Incoming request"]
+	B["Is there an entry for /es/about-us?"]
+	C["Use entry as normal"]
+	D["404"]
+	A --> B
+	B --"Yes"--> C
+	B --"No"--> D
