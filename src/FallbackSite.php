@@ -1,10 +1,10 @@
 <?php
 /**
- * Default Site plugin for Craft 3.0
+ * Fallback Site plugin for Craft 3.0
  * @copyright Copyright Charlie Development
  */
 
-namespace charliedev\defaultsite;
+namespace charliedev\fallbacksite;
 
 use Craft;
 use craft\base\Plugin;
@@ -20,7 +20,7 @@ use yii\web\HttpException;
 /**
  * The main Craft plugin class.
  */
-class DefaultSite extends Plugin
+class FallbackSite extends Plugin
 {
 	/**
 	 * @inheritdoc
@@ -113,7 +113,7 @@ class DefaultSite extends Plugin
 	 */
 	protected function createSettingsModel()
     {
-        return new \charliedev\defaultsite\models\Settings();
+        return new \charliedev\fallbacksite\models\Settings();
 	}
 	
 	/**
@@ -128,7 +128,7 @@ class DefaultSite extends Plugin
 		foreach ($sites as $site) {
 			$siteoptions[$site->id] = Craft::t('site', $site->name);
 		}
-        return Craft::$app->getView()->renderTemplate('default-site/_settings', [
+        return Craft::$app->getView()->renderTemplate('fallback-site/_settings', [
 			'settings' => $this->getSettings(),
 			'sites' => $siteoptions
         ]);

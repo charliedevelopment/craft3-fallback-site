@@ -1,6 +1,6 @@
 {
-	"name": "charliedev/default-site",
-	"description": "Allows fallback sites to be defined for a Craft CMS installation.",
+	"name": "charliedev/fallback-site",
+	"description": "Allows sites of a multi-site install to use entries of other sites if a matching slug is found.",
 	"type": "craft-plugin",
 	"version": "0.0.1",
 	"license": "MIT",
@@ -16,12 +16,14 @@
 		"cms",
 		"craftcms",
 		"default",
+		"element",
+		"fallback",
 		"site",
 		"multi-site"
 	],
 	"support": {
-		"issues": "https://github.com/charliedevelopment/craft3-default-site/issues?state=open",
-		"source": "https://github.com/charliedevelopment/craft3-default-site",
+		"issues": "https://github.com/charliedevelopment/craft3-fallback-site/issues?state=open",
+		"source": "https://github.com/charliedevelopment/craft3-fallback-site",
 		"email": "support@charliedev.com"
 	},
 	"require": {
@@ -29,17 +31,17 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"charliedev\\defaultsite\\": "src/"
+			"charliedev\\fallbacksite\\": "src/"
 		}
 	},
 	"extra": {
-		"name": "Default Site",
-		"handle": "default-site",
-		"changelogUrl": "https://raw.githubusercontent.com/charliedevelopment/craft3-default-site/master/CHANGELOG.md",
-		"downloadUrl": "https://github.com/charliedevelopment/craft3-default-site/archive/master.zip",
+		"name": "Fallback Site",
+		"handle": "fallback-site",
+		"changelogUrl": "https://raw.githubusercontent.com/charliedevelopment/craft3-fallback-site/master/CHANGELOG.md",
+		"downloadUrl": "https://github.com/charliedevelopment/craft3-fallback-site/archive/master.zip",
 		"schemaVersion": "0.0.1",
 		"hasCpSettings": true,
 		"hasCpSection": false,
-		"class": "charliedev\\defaultsite\\DefaultSite"
+		"class": "charliedev\\fallbacksite\\FallbackSite"
 	}
 }
