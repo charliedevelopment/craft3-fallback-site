@@ -1,0 +1,12 @@
+{% import '_includes/forms' as forms %}
+
+{% for site in sites|keys %}
+	{{ forms.selectField({
+		label : 'Fallback site for "{defaultSite}"' | t('default-site', {'defaultSite': sites[site]}),
+		instructions : 'What site, if any, should potential 404s for "{defaultSite}" redirect to?' | t('default-site', {'defaultSite': sites[site]}),
+		id : 'sites[' ~ site ~ ']',
+		name : 'sites[' ~ site ~ ']',
+		value: settings.sites[site],
+		options: sites
+	}) }}
+{% endfor %}

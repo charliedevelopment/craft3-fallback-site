@@ -38,7 +38,7 @@
 		"changelogUrl": "https://raw.githubusercontent.com/charliedevelopment/craft3-default-site/master/CHANGELOG.md",
 		"downloadUrl": "https://github.com/charliedevelopment/craft3-default-site/archive/master.zip",
 		"schemaVersion": "0.0.1",
-		"hasCpSettings": false,
+		"hasCpSettings": true,
 		"hasCpSection": false,
 		"class": "charliedev\\defaultsite\\DefaultSite"
 	}
