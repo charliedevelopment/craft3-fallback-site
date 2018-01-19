@@ -2,7 +2,7 @@
 	"name": "charliedev/fallback-site",
 	"description": "Allows sites of a multi-site install to use entries of other sites if a matching slug is found.",
 	"type": "craft-plugin",
-	"version": "0.0.1",
+	"version": "1.0.0",
 	"license": "MIT",
 	"authors": [
 		{
@@ -39,7 +39,7 @@
 		"handle": "fallback-site",
 		"changelogUrl": "https://raw.githubusercontent.com/charliedevelopment/craft3-fallback-site/master/CHANGELOG.md",
 		"downloadUrl": "https://github.com/charliedevelopment/craft3-fallback-site/archive/master.zip",
-		"schemaVersion": "0.0.1",
+		"schemaVersion": "1.0.0",
 		"hasCpSettings": true,
 		"hasCpSection": false,
 		"class": "charliedev\\fallbacksite\\FallbackSite"

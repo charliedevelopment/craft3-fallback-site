@@ -1,5 +1,7 @@
 ## [Unreleased]
 
+## [1.0.0] 2018-01-19
+
 The initial release of the Fallback Site plugin.
 
 ### Added
