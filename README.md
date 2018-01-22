@@ -54,7 +54,7 @@ composer require charliedev/fallback-site
 
 Within the Craft control panel, go to the `Settings -> Plugins` page, and then look for the `Settings` button listed by the *Fallback Site* plugin.
 
-Here, you can select which site acts as a fallback for each other site. Keep in mind, if a site is a fallback for itself, no further fallbacks are checked. Fallbacks can also be chained across multiple sites, each site falling back to the next.
+Here, you can select which site acts as a fallback for each other site. Fallbacks can also be chained across multiple sites, each site falling back to the next.
 
 ## Usage
 
