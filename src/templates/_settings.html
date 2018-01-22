@@ -1,14 +1,19 @@
 {% import '_includes/forms' as forms %}
 
-<p>Set the fallback sites of each available site below. If a site is set to itself, it will not check further, and is considered to have no fallback.</p>
+<p>Set the fallback sites of each available site below.</p>
 
-{% for site in sites|keys %}
+{% for site in siteoptions|keys %}
+	{% if settings.sites[site] is defined %}
+		{% set siteValue = settings.sites[site] %}
+	{% else %}
+		{% set siteValue = site %}
+	{% endif %}
 	{{ forms.selectField({
-		label : 'Fallback site for "{fallbackSite}"' | t('fallback-site', {'fallbackSite': sites[site]}),
+		label : 'Fallback site for "{fallbackSite}"' | t('fallback-site', {'fallbackSite': craft.app.getSites().getSiteById(site).name | t('site') }),
 		instructions : 'If a request fails on this site, what site should the slug be checked against next, if any?' | t('fallback-site'),
 		id : 'sites[' ~ site ~ ']',
 		name : 'sites[' ~ site ~ ']',
-		value: settings.sites[site],
-		options: sites
+		value: siteValue,
+		options: siteoptions[site]
 	}) }}
 {% endfor %}

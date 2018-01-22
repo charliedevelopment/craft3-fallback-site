@@ -126,14 +126,21 @@ class FallbackSite extends Plugin
 	protected function settingsHtml()
 	{
 		$sites = Craft::$app->getSites()->getAllSites();
-		$siteoptions = [];
+		$siteoptions = []; // A list of options, tailored to each site.
 
 		foreach ($sites as $site) {
-			$siteoptions[$site->id] = Craft::t('site', $site->name);
+			$siteoptions[$site->id] = []; // Build a list for the given site.
+			$siteoptions[$site->id][$site->id] = Craft::t('app', 'None'); // A site using its own ID does not fallback, and is a default 'none' option,
+			foreach ($sites as $option) { // Build a list of all other sites.
+				if ($option->id != $site->id) { // Do not re-add the same site to the list.
+					$siteoptions[$site->id][$option->id] = Craft::t('site', $option->name);
+				}
+			}
 		}
+
 		return Craft::$app->getView()->renderTemplate('fallback-site/_settings', [
 			'settings' => $this->getSettings(),
-			'sites' => $siteoptions
+			'siteoptions' => $siteoptions
 		]);
 	}
 	
