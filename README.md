@@ -1,6 +1,6 @@
 # Fallback Site for Craft 3
 
-This plugin allows each site to fall back to another site when a requested element cannot be found. This allows multi-site installations (typically for multiple languages) to gracefully fall back to existing cotent if available.
+This plugin allows each site to fall back to another site when a requested element cannot be found. This allows multi-site installations (typically for multiple languages) to gracefully fall back to existing content if available.
 
 When a request is made for an element that would normally not be found, *Fallback Site* will check the configured site for an element with the same slug. For example, if you have an English site and a Spanish site as part of your craft install, and English is the fallback for Spanish, then handling for a request to the Spanish site would go as follows:
 

@@ -97,7 +97,7 @@ class FallbackSite extends Plugin
 					Craft::$app->getSites()->currentSite = $originalsite; // Revert Craft to the original site, in case the element has been found.
 					
 					if ($element != false) { // If an element with the fallback site was found, check if it has an enabled version with the original site, in case of different slugs.
-						$element = Craft::$app->getElements()->getElementById($element->id); // Try to retrieve the element with the same ID, using the original locale.
+						$element = Craft::$app->getElements()->getElementById($element->id); // Try to retrieve the element with the same ID, using the original site.
 						if ($element && $element->getStatus() == 'live') { // The element exists in the original site and is enabled, redirect to it.
 							Craft::$app->getRequest()->redirect($element->getUrl(), true, 301); // Element was found under original site, but with different slug.
 						}
