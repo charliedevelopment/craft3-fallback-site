@@ -1,10 +1,12 @@
 ## [Unreleased]
 
+## [1.1.0] 2018-02-26
+
 ### Added
 - Readme now has a screenshot of the settings panel.
 
 ### Fixed
-- Altered fallback behavior to not replace Craft's UrlManager component.
+- Altered fallback behavior to not replace Craft's UrlManager component, which was interfering with other routing plugins, like Element API.
 
 ## [1.0.0] 2018-01-19
 
