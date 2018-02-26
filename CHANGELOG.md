@@ -3,6 +3,9 @@
 ### Added
 - Readme now has a screenshot of the settings panel.
 
+### Fixed
+- Altered fallback behavior to not replace Craft's UrlManager component.
+
 ## [1.0.0] 2018-01-19
 
 The initial release of the Fallback Site plugin.
