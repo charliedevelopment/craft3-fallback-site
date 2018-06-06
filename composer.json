@@ -3,7 +3,7 @@
 	"description": "Allows sites of a multi-site install to use entries of other sites if a matching slug is found.",
 	"type": "craft-plugin",
 	"version": "1.1.0",
-	"license": "MIT",
+	"license": "proprietary",
 	"authors": [
 		{
 			"name": "Charlie Development",

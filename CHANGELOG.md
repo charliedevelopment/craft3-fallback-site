@@ -1,5 +1,8 @@
 ## [Unreleased]
 
+### Fixed
+- Set correct `license` option in the `composer.json`.
+
 ## [1.1.0] 2018-02-26
 
 ### Added
