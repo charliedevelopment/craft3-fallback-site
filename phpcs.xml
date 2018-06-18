@@ -4,7 +4,7 @@
 		PHP syntax errors
 		PSR2 with tabs instead of spaces (https://gist.github.com/gsherwood/9d22f634c57f990a7c64).
 	</description>
-	
+
 	<rule ref="Generic.PHP.Syntax"/>
 
 	<arg name="tab-width" value="4"/>

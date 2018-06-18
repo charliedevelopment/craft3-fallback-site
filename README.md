@@ -25,7 +25,7 @@ See the flowcharts below which demonstrate what happens when requesting a page, 
 
 * Craft CMS 3.0.0-RC1 or above
 
-## 
+##
 1. Open a terminal and navigate to your project folder:
 
 ```bash
