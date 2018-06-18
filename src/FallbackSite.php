@@ -31,7 +31,7 @@ class FallbackSite extends Plugin
 		// Determine if there is an element at the given URL, and attempt to find one using fallback sites
 		// if one is not available. This may interfere with custom routes or direct templates, if one
 		// happens to conflict with the potential path.
-		
+
 		// Only run for regular web frontend requests.
 		if (!Craft::$app->getRequest()->getIsConsoleRequest()
 			&& Craft::$app->getRequest()->getIsSiteRequest()
@@ -53,7 +53,7 @@ class FallbackSite extends Plugin
 	{
 		return new \charliedev\fallbacksite\models\Settings();
 	}
-	
+
 	/**
 	 * @inheritdoc
 	 * @see craft\base\Plugin
@@ -78,7 +78,7 @@ class FallbackSite extends Plugin
 			'siteoptions' => $siteoptions
 		]);
 	}
-	
+
 	/**
 	 * Attempts to find and render an entry from configured fallback sites if an entry hasn't been found for the visited site.
 	 */
@@ -100,7 +100,7 @@ class FallbackSite extends Plugin
 				return;
 			}
 			$checked[$siteid] = true; // Mark this new site as checked.
-			
+
 			$element = Craft::$app->getElements()->getElementByUri($path, $siteid, true); // Check for an entry with the same path in the fallback site.
 			if ($element) { // An element was found with the given path and site id.
 				// Make sure the element has a route, too.
