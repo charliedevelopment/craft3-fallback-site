@@ -109,8 +109,8 @@ class FallbackSite extends Plugin
 					// Check to see if the element has an enabled version with the original site, in case it actually just has a different slug.
 					$originalelement = Craft::$app->getElements()->getElementById($element->id, null, $originalsite->id);
 					if ($originalelement && $originalelement->getStatus() == 'live') { // Found an element with a different slug that is available.
-						Craft::$app->getResponse()->redirect($originalelement->getUrl(), 301); // Redirect to the proper element.
-						die(); // Redirect immediately, do not let Craft fall back to default 404 behavior (which wipes out the redirect).
+						Craft::$app->response->redirect($originalelement->url, 301); // Redirect to the proper element.
+						return Craft::$app->end(); // Redirect immediately, do not let Craft fall back to default 404 behavior (which wipes out the redirect).
 					} else {
 						// Do some reflection **magic** to substitute the element and route with the cached ones in Craft's UrlManager.
 						// This is required because there is no other way to clear this cache short of replacing the UrlManager component
