@@ -8,14 +8,10 @@ namespace charliedev\fallbacksite;
 
 use Craft;
 use craft\base\Plugin;
-use craft\events\ExceptionEvent;
-use craft\helpers\ArrayHelper;
-use craft\services\Fields;
-use craft\web\ErrorHandler;
+use craft\services\Plugins;
 use craft\web\UrlManager;
 
 use yii\base\Event;
-use yii\web\HttpException;
 
 /**
  * The main Craft plugin class.
@@ -28,21 +24,18 @@ class FallbackSite extends Plugin
 	 */
 	public function init()
 	{
-		// Determine if there is an element at the given URL, and attempt to find one using fallback sites
-		// if one is not available. This may interfere with custom routes or direct templates, if one
-		// happens to conflict with the potential path.
-		
-		// Only run for regular web frontend requests.
-		if (!Craft::$app->getRequest()->getIsConsoleRequest()
-			&& Craft::$app->getRequest()->getIsSiteRequest()
-			&& !Craft::$app->getRequest()->getIsLivePreview()) {
-			$element = Craft::$app->getUrlManager()->getMatchedElement(); // Find the element that the current URL is going to.
-			if ($element == null) { // No element found, this request may 404 normally.
-				$this->renderFallbackEntry();
-			}
-		}
-
 		parent::init();
+
+		// NOTE: This will wind up using Craft's `UrlManager`, initializing it earlier than Craft normally would.
+		// This means any plugins/modules that have not yet attached their event handlers to UrlManager will never
+		// receive some of its events (EVENT_REGISTER_CP_URL_RULES, EVENT_REGISTER_SITE_URL_RULES).
+		Event::on(
+			Plugins::class,
+			Plugins::EVENT_AFTER_LOAD_PLUGINS,
+			function () {
+				$this->checkFallbackEntry();
+			}
+		);
 	}
 
 	/**
@@ -53,7 +46,7 @@ class FallbackSite extends Plugin
 	{
 		return new \charliedev\fallbacksite\models\Settings();
 	}
-	
+
 	/**
 	 * @inheritdoc
 	 * @see craft\base\Plugin
@@ -78,7 +71,26 @@ class FallbackSite extends Plugin
 			'siteoptions' => $siteoptions
 		]);
 	}
-	
+
+	/**
+	 * Attempts to find and render an entry from configured fallback sites if an entry hasn't been found for the visited site.
+	 */
+	private function checkFallbackEntry() {
+
+		// Only run for regular web frontend requests.
+		if (!Craft::$app->getRequest()->getIsConsoleRequest()
+		&& Craft::$app->getRequest()->getIsSiteRequest()
+		&& !Craft::$app->getRequest()->getIsLivePreview()) {
+			// Determine if there is an element at the given URL, and attempt to find one using fallback sites
+			// if one is not available. This may interfere with custom routes or direct templates, if one
+			// happens to conflict with the potential path.
+			$element = Craft::$app->getUrlManager()->getMatchedElement(); // Find the element that the current URL is going to.
+			if ($element == null) { // No element found, this request may 404 normally.
+				$this->renderFallbackEntry();
+			}
+		}
+	}
+
 	/**
 	 * Attempts to find and render an entry from configured fallback sites if an entry hasn't been found for the visited site.
 	 */
@@ -100,7 +112,7 @@ class FallbackSite extends Plugin
 				return;
 			}
 			$checked[$siteid] = true; // Mark this new site as checked.
-			
+
 			$element = Craft::$app->getElements()->getElementByUri($path, $siteid, true); // Check for an entry with the same path in the fallback site.
 			if ($element) { // An element was found with the given path and site id.
 				// Make sure the element has a route, too.

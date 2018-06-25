@@ -1,6 +1,9 @@
 ## [Unreleased]
 
+## [1.2.0] 2018-02-26
+
 ### Fixed
+- Fallback Site now performs initialization after all plugins have loaded, its old behavior could cause compatibility issues with other plugins.
 - Set correct `license` option in the `composer.json`.
 
 ## [1.1.0] 2018-02-26
