@@ -1,5 +1,10 @@
 ## [Unreleased]
 
+## [1.2.1] 2018-11-05
+
+### Fixed
+- Initialization moved from post plugin load (`Plugins::EVENT_AFTER_LOAD_PLUGINS`) to post application initialization (`Application::EVENT_INIT`).
+
 ## [1.2.0] 2018-02-26
 
 ### Fixed

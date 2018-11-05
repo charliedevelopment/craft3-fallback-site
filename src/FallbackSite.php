@@ -8,7 +8,7 @@ namespace charliedev\fallbacksite;
 
 use Craft;
 use craft\base\Plugin;
-use craft\services\Plugins;
+use craft\web\Application;
 use craft\web\UrlManager;
 
 use yii\base\Event;
@@ -26,12 +26,14 @@ class FallbackSite extends Plugin
 	{
 		parent::init();
 
-		// NOTE: This will wind up using Craft's `UrlManager`, initializing it earlier than Craft normally would.
+		// NOTE: This will wind up using Craft's `UrlManager`.
 		// This means any plugins/modules that have not yet attached their event handlers to UrlManager will never
-		// receive some of its events (EVENT_REGISTER_CP_URL_RULES, EVENT_REGISTER_SITE_URL_RULES).
+		// receive some of its events (EVENT_REGISTER_CP_URL_RULES, EVENT_REGISTER_SITE_URL_RULES). By this point
+		// plugins should have added their events, but any that use the UrlManager improperly might cause trouble
+		// because of the early initialization.
 		Event::on(
-			Plugins::class,
-			Plugins::EVENT_AFTER_LOAD_PLUGINS,
+			Application::class,
+			Application::EVENT_INIT,
 			function () {
 				$this->checkFallbackEntry();
 			}
