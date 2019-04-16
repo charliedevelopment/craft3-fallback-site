@@ -2,7 +2,7 @@
 	"name": "charliedev/fallback-site",
 	"description": "Allows sites of a multi-site install to use entries of other sites if a matching slug is found.",
 	"type": "craft-plugin",
-	"version": "1.2.1",
+	"version": "1.2.2",
 	"license": "proprietary",
 	"authors": [
 		{

@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## 1.2.2 - 2019-04-16
+
+### Fixed
+- Now calls `Craft::$app->end()` instead of simply halting the script, to allow Craft the opportunity to run any cleanup. (Thanks @stevepsharpe).
+
 ## 1.2.1 - 2018-11-05
 
 ### Fixed
